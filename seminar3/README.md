@@ -1,4 +1,4 @@
-# Seminar 3 - A gentle introduction to feature-driven development
+# Seminar 3 - A gentle introduction to feature- and test- driven development
 
 O să considerăm următoarea problemă
 ```text
@@ -22,7 +22,7 @@ din viața reală ne confruntăm și de maparea realității în cod.
 - în primul rând, trebuie să reprezentăm obiectele din viața reală în cod. Reprezentarea asta e de fapt o metaforă.
 - o să vrem să grupăm propetățile unui obiect într-un singur loc. 
 
-- :bulb: reprezentare prin dicționar:
+:bulb: reprezentare prin dicționar:
 ```python
 fruit = {
     "name": "apple",
@@ -65,7 +65,7 @@ assert my_function(my_data) == my_result, "This is what the user sees if the tes
 ```
 Important de menționat să încercăm să scriem funcții testabile. Funcția să fie cât mai pură și independentă.
 
-:x: :
+:x:
 ```python
 numbers = [1, -2, 2, -3, ...]
 def filter_positive_numbers():
@@ -99,6 +99,7 @@ la toate cazurile astea de fiecare dată când rulez programul și vreau să ver
 și o să aibă grijă ca dacă aș modifica ceva în funcție, să nu stric ceva ce funcționa deja.
 
 Combinăm TDD cu FDD. Pentru fiecare funcționalitate, scriem teste, apoi implementăm funcționalitatea.
+
 
 
 
