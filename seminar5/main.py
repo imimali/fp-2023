@@ -10,5 +10,5 @@ aplicația să permită:
 """
 from seminar5.ui import run
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     run()
