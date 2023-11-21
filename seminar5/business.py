@@ -1,7 +1,13 @@
-from seminar5.domain import (create_student,
-                             get_nr, get_name,
-                             get_group,
-                             get_specialization, set_name, set_group, set_specialisation)
+from seminar5.domain import (
+    create_student,
+    get_nr,
+    get_name,
+    get_group,
+    get_specialization,
+    set_name,
+    set_group,
+    set_specialisation,
+)
 
 
 def add_student(students, nr, name, group, specialisation):
@@ -39,7 +45,13 @@ def copy_student_list(students):
     result = []
     for student in students:
         result.append(
-            create_student(get_nr(student), get_name(student), get_group(student), get_specialization(student)))
+            create_student(
+                get_nr(student),
+                get_name(student),
+                get_group(student),
+                get_specialization(student),
+            )
+        )
     return result
 
 
@@ -61,23 +73,23 @@ def pop_undo_list(undo_list):
 
 def test_add_student():
     students = []
-    add_student(students, 1, 'bob', 212, 'mate-info')
+    add_student(students, 1, "bob", 212, "mate-info")
     assert len(students) == 1
-    assert get_name(students[0]) == 'bob'
+    assert get_name(students[0]) == "bob"
 
-    add_student(students, 2, 'bob2', 212, 'mate-info')
-    assert get_name(students[0]) == 'bob'
-    assert get_name(students[1]) == 'bob2'
+    add_student(students, 2, "bob2", 212, "mate-info")
+    assert get_name(students[0]) == "bob"
+    assert get_name(students[1]) == "bob2"
 
 
 def test_modify():
-    students = [create_student(1, 'bob', 123, 'mateinfo')]
-    modify_student(students, 2, 'bobdated', 124, 'mateinfo2')
-    assert get_name(students[0]) == 'bob'
-    modify_student(students, 1, 'bobdated', 124, 'mateinfo2')
-    assert get_name(students[0]) == 'bobdated'
+    students = [create_student(1, "bob", 123, "mateinfo")]
+    modify_student(students, 2, "bobdated", 124, "mateinfo2")
+    assert get_name(students[0]) == "bob"
+    modify_student(students, 1, "bobdated", 124, "mateinfo2")
+    assert get_name(students[0]) == "bobdated"
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test_add_student()
     test_modify()

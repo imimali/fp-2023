@@ -1,3 +1,16 @@
+"""
+Scrieți o aplicație pentru a gestiona o listă de fructe.
+Fiecare fruct o să aibă un nume, culoare, și greutate.
+Aplicația să permită următoarele funcționalități:
+1. adăugare fructe: utilizatorul introduce detaliile fructelor
+și aplicația le adaugă în listă
+2. filtrare după culoare: utilizatorul introduce o culoare
+iar aplicația afișează acele fructe care sunt de culoarea
+respectivă
+3. afișarea sumei greutății tuturor fructelor
+"""
+
+
 def get_name(fruit):
     return fruit[0]
 
@@ -20,6 +33,12 @@ def set_color(fruit, color):
 
 def set_weight(fruit, weight):
     fruit[2] = weight
+
+
+def create_fruit_from_str(fruit_str):
+    fruit = fruit_str.split(",")
+    fruit[2] = int(fruit[2])
+    return fruit
 
 
 def add_fruit_to_list(fruit_list, fruit):
@@ -75,45 +94,27 @@ def test_filter_by_color():
     ]
 
 
-def read_fruit_from_console():
-    """
-    Reads a fruit from console
-    :return: fruit in string form, fields separated by comma
-    """
-    return input("Enter name, color, weight separated by comma: ")
+def read_fruit():
+    fruit = [None] * 3
+    name = input("Enter name:")
+    set_name(fruit, name)
 
+    color = input("Enter color:")
+    set_color(fruit, color)
 
-def create_fruit_from_str(fruit_str):
-    """
-    Creates a fruit from a string
+    weight = int(input("Enter weight:"))
+    set_weight(fruit, weight)
 
-    :param fruit_str: comma-separated string of fruit data
-    :return: fruit in representation
-    """
-    fruit = fruit_str.split(",")
-    fruit[2] = int(fruit[2])
-    # set_weight(fruit, int(get_weight(fruit))) # alternatively
     return fruit
-
-
-def add_fruit_ui(fruits):
-    """
-    Reads a fruit from console and adds it to the list
-    :param fruits: list of fruits to which to add
-    :return: nothing
-    """
-    raw_fruit = read_fruit_from_console()
-    fruit = create_fruit_from_str(raw_fruit)
-    add_fruit_to_list(fruits, fruit)
-    print(f"{fruit} Adăugat cu succes")
 
 
 def main():
     fruits = []
+    options = {1: filter_by_color}
     while True:
         print(
             """
-        1. Adaugă fruct
+        1. Citește date
         2. Filtrează după culoare
         3. Afișare sumă greutate
         0. Exit
@@ -124,7 +125,8 @@ def main():
             print("Bye")
             break
         if option == 1:
-            add_fruit_ui(fruits)
+            fruit = read_fruit()
+            add_fruit_to_list(fruits, fruit)
         if option == 2:
             print(filter_by_color(fruits, input("Enter color:")))
 
