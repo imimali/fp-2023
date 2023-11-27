@@ -23,7 +23,7 @@ class UI:
             return int(input(message))
         except ValueError:
             print("Invalid value. Try again!")
-            self.__read_valid_int(message)
+            return self.__read_valid_int(message)
 
     def run(self):
         self.__print_menu()
