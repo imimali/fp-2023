@@ -16,6 +16,9 @@ class Singer:
     def __str__(self):
         return f"Singer(id={self.__id},name={self.__name},genre={self.__genre})"
 
+    def __repr__(self):
+        return str(self)
+
     def __eq__(self, other):
         if not isinstance(other, Singer):
             return False
