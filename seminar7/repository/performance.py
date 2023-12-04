@@ -12,6 +12,10 @@ class PerformanceRepository:
         self.__elements.append(element)
 
     def get_all(self):
+        """
+        Return all performances
+        :return:
+        """
         return self.__elements
 
     def __len__(self):

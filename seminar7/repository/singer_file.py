@@ -1,9 +1,6 @@
 from datetime import datetime
 from seminar7.domain import Singer
-
-
-class RepositoryException(Exception):
-    pass
+from seminar7.repository.exceptions import RepositoryException
 
 
 class SingerFileRepository:
@@ -71,33 +68,3 @@ class SingerFileRepository:
 
     def __len__(self):
         return len(self.__elements)
-
-
-def test_repo_read():
-    repo = SingerFileRepository("/Users/maliimregergely/mig/seminar-fp/singers.txt")
-    # assert len(repo.get_all()) == 2
-    ...
-
-
-def test_repo_write():
-    repo = SingerFileRepository("/Users/maliimregergely/mig/seminar-fp/singers.txt")
-    repo.write_to_file()
-
-    repo.add(Singer(1, "Boom", "Madrid"))
-    repo.write_to_file()
-
-
-def test_find():
-    repo = SingerFileRepository("/Users/maliimregergely/mig/seminar-fp/singers.txt")
-    try:
-        assert repo.find_by_id(123123)
-        assert False
-    except RepositoryException:
-        pass
-    assert repo.find_by_id(1) is not None
-
-
-if __name__ == "__main__":
-    test_repo_read()
-    test_repo_write()
-    test_find()

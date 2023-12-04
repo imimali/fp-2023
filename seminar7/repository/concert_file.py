@@ -1,9 +1,6 @@
 from datetime import datetime
 from seminar7.domain import Concert
-
-
-class RepositoryException(Exception):
-    pass
+from seminar7.repository.exceptions import RepositoryException
 
 
 class ConcertFileRepository:
@@ -71,22 +68,3 @@ class ConcertFileRepository:
 
     def __len__(self):
         return len(self.__elements)
-
-
-def test_repo_read():
-    repo = ConcertFileRepository("/Users/maliimregergely/mig/seminar-fp/concerts.txt")
-    assert len(repo.get_all()) == 2
-    ...
-
-
-def test_repo_write():
-    repo = ConcertFileRepository("/Users/maliimregergely/mig/seminar-fp/concerts.txt")
-    repo.write_to_file()
-    date = datetime.strptime("2023-11-23", "%Y-%m-%d")
-    repo.add(Concert(3, "Boom", "Madrid", date))
-    repo.write_to_file()
-
-
-if __name__ == "__main__":
-    test_repo_read()
-    test_repo_write()

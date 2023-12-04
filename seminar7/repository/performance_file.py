@@ -25,24 +25,3 @@ class PerformanceFileRepository(PerformanceRepository):
                 concert = self.__concert_repo.find_by_id(int(concert_id))
                 performance = Performance(singer, concert)
                 self.add(performance)
-
-
-def test_performance_file_repo():
-    singer_repo = SingerFileRepository(
-        "/Users/maliimregergely/mig/seminar-fp/singers.txt"
-    )
-    concert_repo = ConcertFileRepository(
-        "/Users/maliimregergely/mig/seminar-fp/concerts.txt"
-    )
-
-    performance_repo = PerformanceFileRepository(
-        "/Users/maliimregergely/mig/seminar-fp/performances.txt",
-        singer_repo,
-        concert_repo,
-    )
-    assert len(performance_repo) == 4
-    print(performance_repo.get_all())
-
-
-if __name__ == "__main__":
-    test_performance_file_repo()

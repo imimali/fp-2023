@@ -12,6 +12,10 @@ class ConcertRepository:
         self.__elements.append(element)
 
     def get_all(self):
+        """
+        Return all concerts
+        :return:
+        """
         return self.__elements
 
     def __len__(self):
