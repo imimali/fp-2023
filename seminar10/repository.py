@@ -17,7 +17,7 @@ class Repository:
                 for line in f:
                     code, duration, departure, destination = line.strip().split(",")
                     self.__elements.append(
-                        Flight(code, duration, departure, destination)
+                        Flight(code, int(duration), departure, destination)
                     )
         except FileNotFoundError as nf:
             raise RepositoryError(nf)
@@ -52,6 +52,11 @@ class Repository:
 
     def get_all(self):
         return self.__elements
+
+    def update_duration(self, code, new_duration):
+        element = self.find_by_code(code)
+        element.set_duration(new_duration)
+        self.__write_to_file()
 
     def __len__(self):
         return len(self.__elements)

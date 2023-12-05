@@ -17,6 +17,9 @@ class Flight:
     def get_destination(self):
         return self.__destination
 
+    def set_duration(self, duration):
+        self.__duration = duration
+
     def __eq__(self, other):
         if not isinstance(other, Flight):
             return False

@@ -30,3 +30,10 @@ class Service:
 
         # return sorted(all_by_departure, key=lambda x: x.get_destination())
         return sorted(all_by_departure, key=my_key)
+
+    def bulk_increase_duration_by_departure(self, departure, duration):
+        all_by_departure = self.filter_by_departure(departure)
+        for element in all_by_departure:
+            self.__repo.update_duration(
+                element.get_code(), duration + element.get_duration()
+            )

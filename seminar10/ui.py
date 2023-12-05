@@ -10,6 +10,8 @@ class UI:
             """
         1. Add new flight
         2. Remove a flight
+        3. Filter by duration, sort by destination
+        4. Increase duration
         0. Exit
         """
         )
@@ -25,6 +27,13 @@ class UI:
         code = input("Enter flight code")
         self.__service.remove(code)
 
+    def increase_duration(self):
+        duration = int(input("Enter duration"))
+        if not 10 <= duration <= 60:
+            raise ValueError("Invalid duration")
+        departure = input("Enter departure city")
+        self.__service.bulk_increase_duration_by_departure(departure, duration)
+
     def main(self):
         while True:
             try:
@@ -38,7 +47,8 @@ class UI:
                 if command == "3":
                     departure = input("Enter departure")
                     self.__service.get_by_departure_sorted_by_destination(departure)
-
+                if command == "4":
+                    self.increase_duration()
                 elif command == "0":
                     print("Bye")
                     break
