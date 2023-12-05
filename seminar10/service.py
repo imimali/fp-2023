@@ -10,3 +10,6 @@ class Service:
         flight = Flight(code, duration, departure, destination)
         self.__validator.validate(flight)
         self.__repo.add(flight)
+
+    def remove(self, code):
+        self.__repo.remove(code)

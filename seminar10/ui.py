@@ -9,6 +9,7 @@ class UI:
         print(
             """
         1. Add new flight
+        2. Remove a flight
         0. Exit
         """
         )
@@ -20,14 +21,19 @@ class UI:
         destination = input("Enter destination city")
         self.__service.add(code, duration, departure, destination)
 
+    def remove_flight(self):
+        code = input("Enter flight code")
+        self.__service.remove(code)
+
     def main(self):
         while True:
             try:
-
                 self.menu()
                 command = input("Enter option: ")
                 if command == "1":
                     self.add_flight()
+                if command == "2":
+                    self.remove_flight()
                 elif command == "0":
                     print("Bye")
                     break
