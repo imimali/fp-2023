@@ -21,8 +21,9 @@ class UI:
         self.__service.add(code, duration, departure, destination)
 
     def main(self):
-        try:
-            while True:
+        while True:
+            try:
+
                 self.menu()
                 command = input("Enter option: ")
                 if command == "1":
@@ -30,8 +31,8 @@ class UI:
                 elif command == "0":
                     print("Bye")
                     break
-        except ValueError as e:
-            print("Error encountered:", e)
+            except ValueError as e:
+                print("Error encountered:", e)
 
-        except RepositoryError as e:
-            print("Error encountered in persistence", e)
+            except RepositoryError as e:
+                print("Error encountered in persistence", e)

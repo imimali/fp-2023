@@ -14,15 +14,19 @@ def test_flight():
 
 def test_repository_add():
     repo = Repository("../test_flights.txt")
+    assert len(repo) == 1
+    repo.clear()
     repo.add(Flight("0123", 456, "Cluj-Napoca", "Dubai"))
-    assert len(repo) == 4
+    assert len(repo) == 1
+
 
 
 def test_service_add():
     repo = Repository("../test_flights.txt")
+    repo.clear()
     service = Service(repo, FlightValidator())
     service.add("0123", 45, "Cluj-Napoca", "Dubai")
-    assert len(repo) == 4
+    assert len(repo) == 1
     try:
         service.add("0", 45, "Cluj-Napoca", "Dubai")
         assert False

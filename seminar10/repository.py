@@ -22,8 +22,22 @@ class Repository:
         except FileNotFoundError as nf:
             raise RepositoryError(nf)
 
+    def __write_to_file(self):
+        try:
+            with open(self.__file_name, "w") as f:
+                for element in self.__elements:
+                    flight_string = f'{element.get_code()},{element.get_duration()},{element.get_departure()},{element.get_destination()}'
+                    f.write(flight_string + '\n')
+        except FileNotFoundError as nf:
+            raise RepositoryError(nf)
+
+    def clear(self):
+        self.__elements=[]
+        self.__write_to_file()
+
     def add(self, element):
         self.__elements.append(element)
+        self.__write_to_file()
 
     def __len__(self):
         return len(self.__elements)

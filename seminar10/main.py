@@ -6,7 +6,7 @@ from seminar10.ui import UI
 
 
 if __name__ == "__main__":
-    repo = Repository("")
+    repo = Repository("../flights.txt")
     service = Service(repo, FlightValidator())
     ui = UI(service)
     ui.main()
