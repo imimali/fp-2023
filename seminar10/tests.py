@@ -82,6 +82,37 @@ def test_service_remove():
     assert len(repo) == 0
 
 
+def test_repo_get_all():
+    repo = Repository("../test_flights.txt")
+    repo.clear()
+    flight = Flight("0123", 456, "Cluj-Napoca", "Dubai")
+    repo.add(flight)
+    assert repo.get_all() == [flight]
+
+
+def test_repo_filter_by_departure():
+    repo = Repository("../test_flights.txt")
+    repo.clear()
+    service = Service(repo, FlightValidator())
+    service.add("0123", 45, "Cluj-Napoca", "Dubai")
+    assert service.filter_by_departure("Cluj-Napoca") == [
+        Flight("0123", 45, "Cluj-Napoca", "Dubai")
+    ]
+
+
+def test_service_get_by_departure_sorted_by_destination():
+    repo = Repository("../test_flights.txt")
+    repo.clear()
+    service = Service(repo, FlightValidator())
+    service.add("0123", 45, "Cluj-Napoca", "Dubai")
+    service.add("0123", 45, "Cluj-Napoca", "Cairo")
+    service.add("0123", 45, "Cluj", "Cairo")
+    result = service.get_by_departure_sorted_by_destination("Cluj-Napoca")
+    assert len(result) == 2
+    assert result[0].get_destination() == "Cairo"
+    assert result[1].get_destination() == "Dubai"
+
+
 if __name__ == "__main__":
     test_flight()
     test_repository_add()
@@ -89,3 +120,6 @@ if __name__ == "__main__":
     test_repo_find_by_code()
     test_repo_remove()
     test_service_remove()
+    test_repo_get_all()
+    test_repo_filter_by_departure()
+    test_service_get_by_departure_sorted_by_destination()

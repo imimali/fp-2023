@@ -16,3 +16,8 @@ class Flight:
 
     def get_destination(self):
         return self.__destination
+
+    def __eq__(self, other):
+        if not isinstance(other, Flight):
+            return False
+        return self.__code == other.get_code()

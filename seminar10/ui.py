@@ -34,6 +34,11 @@ class UI:
                     self.add_flight()
                 if command == "2":
                     self.remove_flight()
+
+                if command == "3":
+                    departure = input("Enter departure")
+                    self.__service.get_by_departure_sorted_by_destination(departure)
+
                 elif command == "0":
                     print("Bye")
                     break

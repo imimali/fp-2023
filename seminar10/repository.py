@@ -50,5 +50,8 @@ class Repository:
                 return elem
         raise RepositoryError(f"Elem with code {code} not found")
 
+    def get_all(self):
+        return self.__elements
+
     def __len__(self):
         return len(self.__elements)
