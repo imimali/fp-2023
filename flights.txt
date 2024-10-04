@@ -1,0 +1,3 @@
+124,55,București,Milan
+125,69,London,Paris
+123,45,Cluj,Dubai

@@ -25,7 +25,7 @@ def f(n, m, p):
 
 
 if __name__ == '__main__':
-    for p, m in [(2, 3)]:
+    for p, m in [(2, 3),(2,5)]:
         step_numbers = []
         theoretical = []
         empirical = []
